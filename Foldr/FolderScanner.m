@@ -295,12 +295,55 @@
 
 - (void) download: (File*)file
 {
+    [self download:file andOverwrite:false];
+}
+
+- (void) download: (File*)file andOverwrite: (BOOL) overwrite
+{
     file.ignore = true;
     file.path = [path stringByAppendingPathComponent:file.relativePath];
-    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:file.flickrUrl1024]];
+    
+    // Test if there is any existing.
+    NSString *basePath = [file.path stringByDeletingPathExtension];
+    NSString *jpgPath = [basePath stringByAppendingPathExtension:@"jpg"];
+    NSString *pngPath = [basePath stringByAppendingPathExtension:@"png"];
+    NSString *gifPath = [basePath stringByAppendingPathExtension:@"gif"];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:jpgPath])
+    {
+        if (!overwrite)
+            return;
+        
+        [[NSFileManager defaultManager] removeItemAtPath:jpgPath error:nil];
+    }
+    else if ([[NSFileManager defaultManager] fileExistsAtPath:pngPath])
+    {
+        if (!overwrite)
+            return;
+        
+        [[NSFileManager defaultManager] removeItemAtPath:pngPath error:nil];
+    }
+    else if ([[NSFileManager defaultManager] fileExistsAtPath:gifPath])
+    {
+        if (!overwrite)
+            return;
+        
+        [[NSFileManager defaultManager] removeItemAtPath:gifPath error:nil];
+    }
+    
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:file.flickrUrl1024] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:5.0];
     
     NSDictionary *d = [self getPath:[file.path stringByDeletingLastPathComponent]];
     [d setValue:file forKey:file.name];
+    
+    NSString *downloadUrl = file.flickrUrl1024;
+    
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"foldrSizeIdx"] == 1 && file.flickrUrl2048 && file.flickrUrl2048.length > 0)
+        downloadUrl = file.flickrUrl2048;
+    
+    // Null download - do nothing loop
+    if (!downloadUrl)
+        return;
     
     NSLog(@"Queueing request for: %@", file.flickrUrl1024);
     [NSURLConnection sendAsynchronousRequest:req queue:downloads completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
@@ -318,6 +361,11 @@
     [downloads isSuspended];
     [downloads setSuspended:NO];
     downloads.maxConcurrentOperationCount = 2;
+}
+
+- (NSString*)absolutePath:(NSString *)relPath
+{
+    return [path stringByAppendingPathComponent:relPath];
 }
 
 @end

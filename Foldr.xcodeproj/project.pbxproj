@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		753BF8D517F7F27700AAB3CC /* SerialDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 753BF8D417F7F27700AAB3CC /* SerialDict.m */; };
+		753BF8DC17F8012200AAB3CC /* Untitled.icns in Resources */ = {isa = PBXBuildFile; fileRef = 753BF8DB17F8012200AAB3CC /* Untitled.icns */; };
+		753BF8DE17F8046D00AAB3CC /* Icon in Resources */ = {isa = PBXBuildFile; fileRef = 753BF8DD17F8046D00AAB3CC /* Icon */; };
+		753BF8E017F804D500AAB3CC /* foldr_icn.png in Resources */ = {isa = PBXBuildFile; fileRef = 753BF8DF17F804D500AAB3CC /* foldr_icn.png */; };
 		7544078917F777A800A6E78E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7544076917F7776200A6E78E /* Cocoa.framework */; };
 		7544078F17F777A800A6E78E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7544078D17F777A800A6E78E /* InfoPlist.strings */; };
 		7544079117F777A800A6E78E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544079017F777A800A6E78E /* main.m */; };
@@ -54,6 +58,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		753BF8D317F7F27700AAB3CC /* SerialDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialDict.h; sourceTree = "<group>"; };
+		753BF8D417F7F27700AAB3CC /* SerialDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialDict.m; sourceTree = "<group>"; };
+		753BF8DB17F8012200AAB3CC /* Untitled.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Untitled.icns; sourceTree = "<group>"; };
+		753BF8DD17F8046D00AAB3CC /* Icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Icon; sourceTree = "<group>"; };
+		753BF8DF17F804D500AAB3CC /* foldr_icn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foldr_icn.png; sourceTree = "<group>"; };
 		7544074417F7744700A6E78E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7544074617F7744700A6E78E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7544074817F7744700A6E78E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,6 +110,7 @@
 		7544073817F7744700A6E78E = {
 			isa = PBXGroup;
 			children = (
+				753BF8DB17F8012200AAB3CC /* Untitled.icns */,
 				754407E817F78D4D00A6E78E /* ObjectiveFlickr.xcodeproj */,
 				754407D217F77AF300A6E78E /* CDEvents.xcodeproj */,
 				7544078A17F777A800A6E78E /* Foldr */,
@@ -154,6 +164,8 @@
 				7544079717F777A800A6E78E /* AppDelegate.m */,
 				754407FD17F7924200A6E78E /* FoldrCommand.h */,
 				754407FE17F7924200A6E78E /* FoldrCommand.m */,
+				753BF8D317F7F27700AAB3CC /* SerialDict.h */,
+				753BF8D417F7F27700AAB3CC /* SerialDict.m */,
 				7544079917F777A900A6E78E /* MainMenu.xib */,
 				7544078B17F777A800A6E78E /* Supporting Files */,
 			);
@@ -163,6 +175,8 @@
 		7544078B17F777A800A6E78E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				753BF8DF17F804D500AAB3CC /* foldr_icn.png */,
+				753BF8DD17F8046D00AAB3CC /* Icon */,
 				7544078C17F777A800A6E78E /* Foldr-Info.plist */,
 				7544078D17F777A800A6E78E /* InfoPlist.strings */,
 				7544079017F777A800A6E78E /* main.m */,
@@ -286,6 +300,9 @@
 				7544078F17F777A800A6E78E /* InfoPlist.strings in Resources */,
 				7544079517F777A800A6E78E /* Credits.rtf in Resources */,
 				7544079B17F777A900A6E78E /* MainMenu.xib in Resources */,
+				753BF8DC17F8012200AAB3CC /* Untitled.icns in Resources */,
+				753BF8DE17F8046D00AAB3CC /* Icon in Resources */,
+				753BF8E017F804D500AAB3CC /* foldr_icn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +320,7 @@
 				754407FF17F7924200A6E78E /* FoldrCommand.m in Sources */,
 				7544080217F7994500A6E78E /* Foldr.m in Sources */,
 				7544080517F7D8AC00A6E78E /* Uploader.m in Sources */,
+				753BF8D517F7F27700AAB3CC /* SerialDict.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

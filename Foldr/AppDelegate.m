@@ -93,6 +93,7 @@ AppDelegate *mInstance = nil;
 
 - (void)handleIncomingURL:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
+    
     NSURL *callbackURL = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
     NSLog(@"Callback URL: %@", [callbackURL absoluteString]);
     
@@ -113,6 +114,12 @@ AppDelegate *mInstance = nil;
 {
     
     mInstance = self;
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                             [@"~/Pictures/Foldr" stringByExpandingTildeInPath], @"foldrLocation",
+                                                             @"5", @"foldrRefresh",
+                                                             @"0", @"foldrSizeIdx",
+                                                             nil]];
     
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleIncomingURL:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
     

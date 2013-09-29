@@ -10,4 +10,7 @@
 
 @interface SerialDict : NSObject
 
++ (void) serialise: (NSDictionary *)d into: (NSString*)path;
++ (NSMutableDictionary*) deserialize: (NSString *)path;
+
 @end
