@@ -354,7 +354,12 @@ Foldr *instance = nil;
 - (void) rescanTask
 {
     [self rescan];
-    [self performSelector:@selector(rescanTask) withObject:nil afterDelay:5];
+    
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                                [self methodSignatureForSelector:@selector(rescan)]];
+    [invocation setTarget:self];
+    [invocation setSelector:@selector(rescan)];
+    [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:5 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
 }
 
 @end

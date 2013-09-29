@@ -56,7 +56,10 @@ AppDelegate *mInstance = nil;
 {
     @synchronized(commandQueue)
     {
-        return [commandQueue count];
+        NSUInteger count = [commandQueue count];
+        if (sending)
+            count++;
+        return count;
     }
 }
 

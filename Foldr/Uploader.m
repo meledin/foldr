@@ -47,6 +47,7 @@ Uploader *upInstance;
 - (void) setCtx:(OFFlickrAPIContext *)ctx
 {
     req = [[OFFlickrAPIRequest alloc] initWithAPIContext:ctx];
+    req.requestTimeoutInterval = 60.0;
     [req setDelegate:self];
 }
 

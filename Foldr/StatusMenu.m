@@ -52,17 +52,19 @@
 
 - (void) refresh
 {
-    del.statusMenuDownloads.title = [self createTitle: @"Downloads" forCount: [down numTasks]];
-    del.statusMenuUploads.title = [self createTitle: @"Uploads" forCount: [up numTasks]];
-    del.statusMenuTasks.title = [self createTitle: @"Tasks" forCount: [del numTasks]];
+    del.statusMenuDownloads.title = [self createTitle: @"Download" forCount: [down numTasks]];
+    del.statusMenuUploads.title = [self createTitle: @"Upload" forCount: [up numTasks]];
+    del.statusMenuTasks.title = [self createTitle: @"Task" forCount: [del numTasks]];
 }
 
-- (NSString*) createTitle: (NSString*)title forCount: (NSUInteger) count
+- (NSString*) createTitle: (NSString*)title forCount: (NSUInteger) tc
 {
-    if (count == 0)
-        return [@"No " stringByAppendingString:title];
+    if (tc <= 0)
+        return [NSString stringWithFormat:@"No %@s", title];
+    else if (tc == 1)
+        return [NSString stringWithFormat:@"%ld %@", tc, title];
     else
-        return [NSString stringWithFormat:@"%d %@", count, title];
+        return [NSString stringWithFormat:@"%ld %@s", tc, title];
 }
 
 @end
