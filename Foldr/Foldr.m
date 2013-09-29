@@ -12,6 +12,7 @@
 #import "FolderScanner.h"
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 #import "SerialDict.h"
+#import "StatusMenu.h"
 
 Foldr *instance = nil;
 
@@ -20,6 +21,7 @@ Foldr *instance = nil;
     NSDictionary *user;
     AppDelegate *delegate;
     FolderScanner *scanner;
+    StatusMenu *status;
 }
 
 + (Foldr*) instance
@@ -38,8 +40,6 @@ Foldr *instance = nil;
     if (self)
     { 
         delegate = [AppDelegate instance];
-        scanner = [[FolderScanner alloc] init];
-        [self rescanTask];
     }
     
     return self;
@@ -50,9 +50,15 @@ Foldr *instance = nil;
     FoldrCommand *cmd = [FoldrCommand get: @"flickr.test.login"];
     cmd.onSuccess = ^(NSDictionary *resp)
     {
+        
+        scanner = [[FolderScanner alloc] init];
+        status = [[StatusMenu alloc] init];
+        
         NSLog(@"Got response: %@", [resp description]);
         user = [resp valueForKeyPath:@"user"];
         NSLog(@"Got Username: %@", [user valueForKeyPath:@"username._text"]);
+        
+        [delegate notifyLoggedIn];
         
         NSString *dest = [NSString stringWithFormat:@"%@", [user valueForKeyPath:@"username._text"]];
         [scanner ensureDirExists:dest];
@@ -65,14 +71,15 @@ Foldr *instance = nil;
         [d setValue:@"flickr.photos.search" forKey:@"query"];
         
         [SerialDict serialise:d into:[dirPath stringByAppendingPathComponent:@".query"]];
-        [self rescan];
+        
+        [self rescanTask];
         
         //[self downloadPhotosForUserId:[user valueForKeyPath:@"id"] withAttributes:nil intoFolder:dest];
     };
     cmd.onError = ^(NSError *err)
     {
-        //if (err.code == 99)
-            //[delegate oauthAuthenticationAction];
+        if (err.code == 99 || err.code == 2147418115)
+            [delegate oauthAuthenticationAction];
     };
     
     [delegate queueCommand: cmd];
@@ -83,6 +90,7 @@ Foldr *instance = nil;
 {
     NSMutableDictionary *attrs = [NSMutableDictionary dictionaryWithDictionary:inAttrs];
     [attrs setValue:@"url_k,url_l,date_upload,date_taken" forKey:@"extras"];
+    [attrs setValue:@"30" forKey:@"per_page"];
     
     FoldrCommand *cmd = [FoldrCommand get:@"flickr.photos.search"];
     cmd.arguments = attrs;
@@ -158,7 +166,10 @@ Foldr *instance = nil;
         // Only start the procedure if we recognise the file type.
         if (imageType != nil)
         {
-            NSInputStream *stream = [NSInputStream inputStreamWithFileAtPath:item.path];
+            
+            if (![item.relativePath hasPrefix: [user valueForKeyPath:@"username._text"]])
+                return;
+            
             NSString *title = [item.name stringByDeletingPathExtension];
             NSString *desc = @"";
             
@@ -173,11 +184,17 @@ Foldr *instance = nil;
             NSLog(@"Preparing to upload: %@", item.path);
             
             FoldrCommand *cmd = [FoldrCommand post:nil];
+            __weak FoldrCommand *embedded = cmd;
             cmd.execute = ^(OFFlickrAPIRequest *req) {
+                NSInputStream *stream = [NSInputStream inputStreamWithFileAtPath:item.path];
                 [req uploadImageStream:stream suggestedFilename:item.name MIMEType:imageType arguments:params];
             };
             cmd.onSuccess = ^(NSDictionary *resp) {
                 item.flickrPhotoId = [resp valueForKeyPath:@"photoid._text"];
+            };
+            cmd.onError = ^(NSError *err) {
+                if (err.code == 2147418114 || err.code == 4)
+                    [delegate performSelector:@selector(queueCommand:) withObject:embedded afterDelay:2.0];
             };
             
             [delegate queueCommand:cmd];

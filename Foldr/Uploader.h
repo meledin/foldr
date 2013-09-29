@@ -15,5 +15,6 @@
 @property(strong) OFFlickrAPIContext *ctx;
 - (void) enqueue: (FoldrCommand*)newCmd;
 + (Uploader*) instance;
+- (NSUInteger) numTasks;
 
 @end

@@ -52,6 +52,23 @@ AppDelegate *mInstance = nil;
     return self;
 }
 
+- (NSUInteger) numTasks
+{
+    @synchronized(commandQueue)
+    {
+        return [commandQueue count];
+    }
+}
+
+- (IBAction)resetToken:(id)sender {
+    _flickrContext.OAuthToken = @"";
+    _flickrContext.OAuthTokenSecret = @"";
+    
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setValue:@"" forKey:@"access_token"];
+    [def setValue:@"" forKey:@"access_secret"];
+}
+
 - (void) queueCommand: (FoldrCommand *) command
 {
     
@@ -72,7 +89,7 @@ AppDelegate *mInstance = nil;
 
 - (void) flushCommands
 {
-    @synchronized(self)
+    @synchronized(commandQueue)
     {
         if (sending)
             return;
@@ -86,9 +103,11 @@ AppDelegate *mInstance = nil;
         [commandQueue removeObjectAtIndex:0];
         
         _flickrRequest.sessionInfo = NULL;
-        currentCommand.execute(_flickrRequest);
+        
         
     }
+    currentCommand.execute(_flickrRequest);
+        
 }
 
 - (void)handleIncomingURL:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -147,8 +166,11 @@ AppDelegate *mInstance = nil;
     //[_progressIndicator startAnimation:self];
     //[_progressLabel setStringValue:@"Starting OAuth authentication..."];
     
-    _flickrRequest.sessionInfo = kOAuthAuth;
-    [_flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:kCallbackURLBaseString]];
+    [self.loggingInBox setHidden:YES];
+    [self.prefsBox setHidden:NO];
+    [self.continueButton setEnabled:YES];
+    [self.window makeKeyAndOrderFront:self];
+    
     //[_oldStyleAuthButton setEnabled:NO];
     //[_oauthAuthButton setEnabled:NO];
 }
@@ -236,6 +258,12 @@ AppDelegate *mInstance = nil;
     [def setValue:inAccessToken forKey:@"access_token"];
     [def setValue:inSecret forKey:@"access_secret"];
     
+    [self.loggingInBox setHidden:YES];
+    [self.prefsBox setHidden:NO];
+    [self.continueButton setEnabled:YES];
+    [self.window orderOut:self];
+    [self.spinnyBar stopAnimation:self];
+    
     [[Foldr instance] testLogin];
 }
 
@@ -315,6 +343,42 @@ AppDelegate *mInstance = nil;
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest imageUploadSentBytes:(NSUInteger)inSentBytes totalBytes:(NSUInteger)inTotalBytes
 {
     NSLog(@"%s %lu/%lu", __PRETTY_FUNCTION__, inSentBytes, inTotalBytes);
+}
+
+- (IBAction)performLogin:(id)sender {
+    _flickrRequest.sessionInfo = kOAuthAuth;
+    [_flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:kCallbackURLBaseString]];
+    [self.loggingInBox setHidden:NO];
+    [self.prefsBox setHidden:YES];
+    [self.spinnyBar startAnimation:self];
+    [self.continueButton setEnabled:NO];
+}
+
+- (void) notifyLoggedIn
+{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    [notification setTitle:@"Foldr Login Success!"];
+    [notification setInformativeText:@"You are now logged in to Foldr. It has hidden itself for your convenience. Enjoy!"];
+    
+    [self performSelector:@selector(removeNotification:) withObject:notification afterDelay:10];
+    
+    NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+    [center setDelegate:self];
+    [center deliverNotification:notification];
+}
+
+- (IBAction)showPreferences:(id)sender {
+}
+
+- (void) removeNotification: (NSUserNotification *)notification
+{
+    NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+    [center removeDeliveredNotification:notification];
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
+{
+    return YES;
 }
 
 @end

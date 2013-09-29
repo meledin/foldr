@@ -12,12 +12,15 @@
 #import "File.h"
 #import "Foldr.h"
 
+FolderScanner *fsInstance;
+
 @implementation FolderScanner
 {
     CDEvents *events;
     NSMutableDictionary *contents;
     NSString *path;
     NSOperationQueue *downloads;
+    NSUInteger numDownloads;
 }
 
 //- (void) indexSubDirectory: (NSString*)path;
@@ -70,16 +73,23 @@
     }
 }
 
++ (FolderScanner*)instance
+{
+    return fsInstance;
+}
+
 - (id) init
 {
     self = [super init];
     
     if (self)
     {
+        fsInstance = self;
         downloads = [[NSOperationQueue alloc] init];
         path = [@"~/Pictures/Foldr" stringByExpandingTildeInPath];
         
         unsigned long lastEvent = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastEvent"];
+        numDownloads = 0;
         
         if (!lastEvent) lastEvent = kCDEventsSinceEventNow;
         
@@ -331,12 +341,9 @@
         [[NSFileManager defaultManager] removeItemAtPath:gifPath error:nil];
     }
     
-    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:file.flickrUrl1024] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:5.0];
-    
-    NSDictionary *d = [self getPath:[file.path stringByDeletingLastPathComponent]];
-    [d setValue:file forKey:file.name];
-    
     NSString *downloadUrl = file.flickrUrl1024;
+    
+    NSLog(@"%ld", [[NSUserDefaults standardUserDefaults] integerForKey:@"foldrSizeIdx"]);
     
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"foldrSizeIdx"] == 1 && file.flickrUrl2048 && file.flickrUrl2048.length > 0)
         downloadUrl = file.flickrUrl2048;
@@ -345,9 +352,22 @@
     if (!downloadUrl)
         return;
     
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: downloadUrl] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:60.0];
+    
+    NSDictionary *d = [self getPath:[file.path stringByDeletingLastPathComponent]];
+    [d setValue:file forKey:file.name];
+    
     NSLog(@"Queueing request for: %@", file.flickrUrl1024);
+    @synchronized(self)
+    {
+        numDownloads++;
+    }
     [NSURLConnection sendAsynchronousRequest:req queue:downloads completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSLog(@"Request completed");
+        @synchronized(self)
+        {
+            numDownloads--;
+        }
         [data writeToFile:file.path atomically:true];
         
         NSDictionary *attr = [NSDictionary dictionaryWithObjectsAndKeys:file.creationDate, NSFileCreationDate, file.modificationDate, NSFileModificationDate, nil];
@@ -366,6 +386,11 @@
 - (NSString*)absolutePath:(NSString *)relPath
 {
     return [path stringByAppendingPathComponent:relPath];
+}
+
+- (NSUInteger) numTasks
+{
+    return numDownloads;
 }
 
 @end

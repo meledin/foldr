@@ -24,6 +24,11 @@
 		754407FF17F7924200A6E78E /* FoldrCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407FE17F7924200A6E78E /* FoldrCommand.m */; };
 		7544080217F7994500A6E78E /* Foldr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080117F7994500A6E78E /* Foldr.m */; };
 		7544080517F7D8AC00A6E78E /* Uploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080417F7D8AC00A6E78E /* Uploader.m */; };
+		75E5011B17F88E5400314DDA /* StatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5011A17F88E5400314DDA /* StatusMenu.m */; };
+		75E5012317F88F8E00314DDA /* menuicon_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E5012117F88F8E00314DDA /* menuicon_highlight.png */; };
+		75E5012417F88F8E00314DDA /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E5012217F88F8E00314DDA /* menuicon.png */; };
+		75E5012717F89B7300314DDA /* CDEvents.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 754407D817F77AF400A6E78E /* CDEvents.framework */; };
+		75E5012817F89B7700314DDA /* ObjectiveFlickr.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 754407EF17F78D4D00A6E78E /* ObjectiveFlickr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,20 @@
 			remoteInfo = "ObjectiveFlickr (library)";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		75E5012617F89B5E00314DDA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				75E5012717F89B7300314DDA /* CDEvents.framework in CopyFiles */,
+				75E5012817F89B7700314DDA /* ObjectiveFlickr.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		753BF8D317F7F27700AAB3CC /* SerialDict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialDict.h; sourceTree = "<group>"; };
@@ -91,6 +110,10 @@
 		7544080117F7994500A6E78E /* Foldr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foldr.m; sourceTree = "<group>"; };
 		7544080317F7D8AC00A6E78E /* Uploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uploader.h; sourceTree = "<group>"; };
 		7544080417F7D8AC00A6E78E /* Uploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uploader.m; sourceTree = "<group>"; };
+		75E5011917F88E5400314DDA /* StatusMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusMenu.h; sourceTree = "<group>"; };
+		75E5011A17F88E5400314DDA /* StatusMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusMenu.m; sourceTree = "<group>"; };
+		75E5012117F88F8E00314DDA /* menuicon_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuicon_highlight.png; path = icons/menuicon_highlight.png; sourceTree = SOURCE_ROOT; };
+		75E5012217F88F8E00314DDA /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuicon.png; path = icons/menuicon.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +189,8 @@
 				754407FE17F7924200A6E78E /* FoldrCommand.m */,
 				753BF8D317F7F27700AAB3CC /* SerialDict.h */,
 				753BF8D417F7F27700AAB3CC /* SerialDict.m */,
+				75E5011917F88E5400314DDA /* StatusMenu.h */,
+				75E5011A17F88E5400314DDA /* StatusMenu.m */,
 				7544079917F777A900A6E78E /* MainMenu.xib */,
 				7544078B17F777A800A6E78E /* Supporting Files */,
 			);
@@ -175,6 +200,8 @@
 		7544078B17F777A800A6E78E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				75E5012117F88F8E00314DDA /* menuicon_highlight.png */,
+				75E5012217F88F8E00314DDA /* menuicon.png */,
 				753BF8DF17F804D500AAB3CC /* foldr_icn.png */,
 				753BF8DD17F8046D00AAB3CC /* Icon */,
 				7544078C17F777A800A6E78E /* Foldr-Info.plist */,
@@ -214,6 +241,7 @@
 				7544078417F777A800A6E78E /* Sources */,
 				7544078517F777A800A6E78E /* Frameworks */,
 				7544078617F777A800A6E78E /* Resources */,
+				75E5012617F89B5E00314DDA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -303,6 +331,8 @@
 				753BF8DC17F8012200AAB3CC /* Untitled.icns in Resources */,
 				753BF8DE17F8046D00AAB3CC /* Icon in Resources */,
 				753BF8E017F804D500AAB3CC /* foldr_icn.png in Resources */,
+				75E5012317F88F8E00314DDA /* menuicon_highlight.png in Resources */,
+				75E5012417F88F8E00314DDA /* menuicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +351,7 @@
 				7544080217F7994500A6E78E /* Foldr.m in Sources */,
 				7544080517F7D8AC00A6E78E /* Uploader.m in Sources */,
 				753BF8D517F7F27700AAB3CC /* SerialDict.m in Sources */,
+				75E5011B17F88E5400314DDA /* StatusMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +457,7 @@
 				GCC_PREFIX_HEADER = "Foldr/Foldr-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INFOPLIST_FILE = "Foldr/Foldr-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -448,6 +480,7 @@
 				GCC_PREFIX_HEADER = "Foldr/Foldr-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INFOPLIST_FILE = "Foldr/Foldr-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

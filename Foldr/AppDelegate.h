@@ -11,7 +11,7 @@
 
 @class FoldrCommand;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, OFFlickrAPIRequestDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, OFFlickrAPIRequestDelegate, NSUserNotificationCenterDelegate>
 {
     OFFlickrAPIContext *_flickrContext;
     OFFlickrAPIRequest *_flickrRequest;
@@ -22,7 +22,24 @@
 + (AppDelegate*)instance;
 - (void) queueCommand: (FoldrCommand *) command;
 - (void)oauthAuthenticationAction;
+- (void) notifyLoggedIn;
+- (IBAction)showPreferences:(id)sender;
+
+- (IBAction)performLogin:(id)sender;
+- (NSUInteger) numTasks;
+- (IBAction)resetToken:(id)sender;
 
 @property (assign) IBOutlet NSWindow *window;
+@property (strong) IBOutlet NSMenu *statusMenu;
+
+@property (weak) IBOutlet NSBox *loggingInBox;
+@property (weak) IBOutlet NSBox *prefsBox;
+@property (weak) IBOutlet NSButton *continueButton;
+@property (weak) IBOutlet NSProgressIndicator *spinnyBar;
+
+@property (weak) IBOutlet NSMenuItem *statusMenuDownloads;
+@property (weak) IBOutlet NSMenuItem *statusMenuUploads;
+@property (weak) IBOutlet NSMenuItem *statusMenuTasks;
+
 
 @end

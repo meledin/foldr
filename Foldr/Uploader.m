@@ -119,6 +119,16 @@ Uploader *upInstance;
     }
 }
 
+- (NSUInteger) numTasks
+{
+    @synchronized(self)
+    {
+        NSUInteger count = [queue count];
+        if (running) count++;
+        return count;
+    }
+}
+
 
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest imageUploadSentBytes:(NSUInteger)inSentBytes totalBytes:(NSUInteger)inTotalBytes
 {

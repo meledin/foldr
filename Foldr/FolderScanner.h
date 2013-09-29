@@ -16,5 +16,7 @@
 - (void) download: (File*)file;
 - (NSMutableDictionary*) indexedDirAtSubPath: (NSString*)subPath;
 - (NSString *)absolutePath: (NSString *)relPath;
+- (NSUInteger) numTasks;
++ (FolderScanner*)instance;
 
 @end
