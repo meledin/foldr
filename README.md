@@ -1,4 +1,4 @@
-foldr
+Synckr
 =====
 
 Access Flickr from Finder
