@@ -333,7 +333,7 @@ Foldr *instance = nil;
             continue;
         }
         // Rescan the directory.
-        nextScan = [now dateByAddingTimeInterval:60];
+        nextScan = [now dateByAddingTimeInterval:60*60];
         [props setValue:nextScan forKey:@"nextScan"];
         
         NSMutableDictionary *query = [SerialDict deserialize:[scanner absolutePath:[dir stringByAppendingPathComponent:@".query"]]];

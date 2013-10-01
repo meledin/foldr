@@ -64,6 +64,10 @@ AppDelegate *mInstance = nil;
 }
 
 - (IBAction)resetToken:(id)sender {
+    
+    //[NSString stringWithFormat:@"Log out user %@", [[Foldr instance] username]];
+    //[NSAlert alertWithMessageText: defaultButton:<#(NSString *)#> alternateButton:<#(NSString *)#> otherButton:<#(NSString *)#> informativeTextWithFormat:<#(NSString *), ...#>]
+    
     _flickrContext.OAuthToken = @"";
     _flickrContext.OAuthTokenSecret = @"";
     
