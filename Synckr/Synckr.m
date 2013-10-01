@@ -72,7 +72,7 @@ Synckr *instance = nil;
         
         [SerialDict serialise:d into:[dirPath stringByAppendingPathComponent:@".query"]];
         
-        [self rescanTask];
+        [self refreshTask];
         
         //[self downloadPhotosForUserId:[user valueForKeyPath:@"id"] withAttributes:nil intoFolder:dest];
     };
@@ -241,7 +241,7 @@ Synckr *instance = nil;
                 
                 [SerialDict serialise:d into:[dirPath stringByAppendingPathComponent:@".query"]];
                 
-                [self rescan];
+                [self refresh];
                 
                 //[self downloadPhotosForUserId:[resp valueForKeyPath:@"user.nsid"] withAttributes:nil intoFolder:dest];
             };
@@ -298,7 +298,7 @@ Synckr *instance = nil;
                 [d setValue:@"flickr.photos.search" forKey:@"query"];
                 
                 [SerialDict serialise:d into:[dirPath stringByAppendingPathComponent:@".query"]];
-                [self rescan];
+                [self refresh];
             };
             cmd.onError= ^(NSError *err)
             {
@@ -314,7 +314,7 @@ Synckr *instance = nil;
 
 }
 
-- (void) rescan
+- (void) refresh
 {
     NSDictionary *d = [scanner indexedDirAtSubPath:@""];
     NSArray *dirNames = [d allKeys];
@@ -325,16 +325,25 @@ Synckr *instance = nil;
     {
         NSString *dir = dirNames[i];
         NSMutableDictionary *props = [SerialDict deserialize:[scanner absolutePath:[dir stringByAppendingPathComponent:@".props"]]];
-        NSDate *nextScan = [NSDate dateWithString:[props valueForKey:@"nextScan"]];
+        NSDate *nextScan = [NSDate dateWithString:[props valueForKey:KEY_NEXT_REFRESH]];
         
         if ([nextScan isGreaterThan:now])
         {
-            NSLog(@"Directory %@ does not need rescanning. Next due at %@", dir, nextScan);
+            NSLog(@"Directory %@ does not need refreshing. Next due at %@", dir, nextScan);
             continue;
         }
         // Rescan the directory.
-        nextScan = [now dateByAddingTimeInterval:60*60];
-        [props setValue:nextScan forKey:@"nextScan"];
+        
+        NSUInteger refreshInterval = [[NSUserDefaults standardUserDefaults] integerForKey:@"refreshInterval"];
+        
+        if ([props valueForKey:@"refreshInterval"])
+            refreshInterval = [[props valueForKey: CONFIG_REFRESH_INTERVAL] intValue];
+        
+        if (refreshInterval < MIN_REFRESH_INTERVAL)
+            refreshInterval = MIN_REFRESH_INTERVAL;
+        
+        nextScan = [now dateByAddingTimeInterval:refreshInterval*60];
+        [props setValue:nextScan forKey:KEY_NEXT_REFRESH];
         
         NSMutableDictionary *query = [SerialDict deserialize:[scanner absolutePath:[dir stringByAppendingPathComponent:@".query"]]];
         NSString *q = [query valueForKey:@"query"];
@@ -351,14 +360,14 @@ Synckr *instance = nil;
     }
 }
 
-- (void) rescanTask
+- (void) refreshTask
 {
-    [self rescan];
+    [self refresh];
     
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
-                                [self methodSignatureForSelector:@selector(rescan)]];
+                                [self methodSignatureForSelector:@selector(refresh)]];
     [invocation setTarget:self];
-    [invocation setSelector:@selector(rescan)];
+    [invocation setSelector:@selector(refresh)];
     [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:5 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
 }
 

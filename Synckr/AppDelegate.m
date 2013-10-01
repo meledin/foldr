@@ -16,7 +16,7 @@
 #define API_SHARED_SECRET @"a5e43bcba7cf4499"
 
 
-static NSString *kCallbackURLBaseString = @"flickrSynckr://callback";
+static NSString *kCallbackURLBaseString = @"flickrsynckr://callback";
 static NSString *kOAuthAuth = @"OAuth";
 static NSString *kFrobRequest = @"Frob";
 static NSString *kTryObtainAuthToken = @"TryAuth";
@@ -76,6 +76,26 @@ AppDelegate *mInstance = nil;
     [def setValue:@"" forKey:@"access_secret"];
 }
 
+- (IBAction)changeSynckrFolder:(id)sender {
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    panel.canChooseDirectories = YES;
+    panel.canChooseFiles = NO;
+    panel.allowsMultipleSelection = NO;
+    
+    [panel beginWithCompletionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton)
+        {
+            if (panel.URLs.count == 1)
+            {
+                NSString *path = [panel.URLs[0] path];
+                [[NSUserDefaults standardUserDefaults] setValue:path forKey:CONFIG_SYNCKR_DIR];
+                [self updateLocation];
+            }
+        }
+    }];
+}
+
 - (void) queueCommand: (SynckrCommand *) command
 {
     
@@ -92,6 +112,18 @@ AppDelegate *mInstance = nil;
     }
     
     [self flushCommands];
+}
+
+- (void) updateLocation
+{
+    NSString *path = [[NSUserDefaults standardUserDefaults] stringForKey:CONFIG_SYNCKR_DIR];
+    NSString *target = [path lastPathComponent];
+    path = [path stringByDeletingLastPathComponent];
+    NSString *parent = [path lastPathComponent];
+    
+    NSString *final = [NSString stringWithFormat:@"%@ in folder %@", target, parent];
+    
+    self.locationField.stringValue = final;
 }
 
 - (void) flushCommands
@@ -140,12 +172,16 @@ AppDelegate *mInstance = nil;
 {
     
     mInstance = self;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                             [@"~/Pictures/Synckr" stringByExpandingTildeInPath], @"SynckrLocation",
-                                                             @"5", @"SynckrRefresh",
-                                                             @"0", @"SynckrSizeIdx",
+                                                             [basePath stringByAppendingPathComponent:@"Synckr"], CONFIG_SYNCKR_DIR,
+                                                             @"15", CONFIG_REFRESH_INTERVAL,
+                                                             @"0", CONFIG_PHOTO_RESOLUTION,
                                                              nil]];
+    
+    [self updateLocation];
     
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleIncomingURL:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
     

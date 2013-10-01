@@ -28,9 +28,11 @@
 - (IBAction)performLogin:(id)sender;
 - (NSUInteger) numTasks;
 - (IBAction)resetToken:(id)sender;
+- (IBAction)changeSynckrFolder:(id)sender;
 
 @property (assign) IBOutlet NSWindow *window;
 @property (strong) IBOutlet NSMenu *statusMenu;
+@property (weak) IBOutlet NSTextField *locationField;
 
 @property (weak) IBOutlet NSBox *loggingInBox;
 @property (weak) IBOutlet NSBox *prefsBox;

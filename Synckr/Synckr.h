@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 
+#define CONFIG_SYNCKR_DIR @"synckrDirectory"
+#define CONFIG_PHOTO_RESOLUTION @"photoSizeIdx"
+#define CONFIG_REFRESH_INTERVAL @"refreshInterval"
+#define CONFIG_LAST_EVENT_ID @"lastEventId"
+
+#define KEY_REFRESH_INTERVAL CONFIG_REFRESH_INTERVAL
+#define KEY_NEXT_REFRESH @"nextRefresh"
+
+#define MIN_REFRESH_INTERVAL 15
+
 @interface Synckr : NSObject
 
 + (Synckr*) instance;

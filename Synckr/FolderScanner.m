@@ -28,7 +28,7 @@ FolderScanner *fsInstance;
 - (void) indexDirectory: (NSString*)dirPath intoDictionary: (NSMutableDictionary*)dict recursively: (BOOL) isRecursive
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *theFiles =  [fileManager contentsOfDirectoryAtURL:[NSURL fileURLWithPath:dirPath]
+    NSArray *theFiles =  [fileManager contentsOfDirectoryAtURL:[NSURL fileURLWithPath:[dirPath stringByResolvingSymlinksInPath]]
                                     includingPropertiesForKeys:[NSArray arrayWithObject:NSURLNameKey]
                                                        options:NSDirectoryEnumerationSkipsHiddenFiles
                                                          error:nil];
@@ -86,7 +86,7 @@ FolderScanner *fsInstance;
     {
         fsInstance = self;
         downloads = [[NSOperationQueue alloc] init];
-        path = [@"~/Pictures/Synckr" stringByExpandingTildeInPath];
+        path = [[[NSUserDefaults standardUserDefaults] valueForKey:CONFIG_SYNCKR_DIR] stringByResolvingSymlinksInPath];
         
         unsigned long lastEvent = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastEvent"];
         numDownloads = 0;
@@ -97,25 +97,28 @@ FolderScanner *fsInstance;
         
         @synchronized(self)
         {
-        
-        events = [[CDEvents alloc] initWithURLs:[NSArray arrayWithObject:[NSURL URLWithString: path]] delegate:self onRunLoop:[NSRunLoop currentRunLoop]  sinceEventIdentifier: lastEvent
-            notificationLantency:0.1
-            ignoreEventsFromSubDirs:CD_EVENTS_DEFAULT_IGNORE_EVENT_FROM_SUB_DIRS
-            excludeURLs:nil
-            streamCreationFlags:kCDEventsDefaultEventStreamFlags];
-        
-        contents = [NSMutableDictionary dictionaryWithContentsOfFile:@"~/Pictures/Synckr/.SynckrIndex"];
-        
-        if (!contents)
-        {
-            contents = [[NSMutableDictionary alloc] init];
             
-            // Index the contents
+            events = [[CDEvents alloc] initWithURLs:[NSArray arrayWithObject:[NSURL URLWithString: path]] delegate:self onRunLoop:[NSRunLoop currentRunLoop]  sinceEventIdentifier: lastEvent
+                               notificationLantency:0.1
+                            ignoreEventsFromSubDirs:CD_EVENTS_DEFAULT_IGNORE_EVENT_FROM_SUB_DIRS
+                                        excludeURLs:nil
+                                streamCreationFlags:kCDEventsDefaultEventStreamFlags];
             
-            [self indexDirectory: path intoDictionary: contents recursively:true];
+            contents = [NSMutableDictionary dictionaryWithContentsOfFile:[path stringByAppendingPathComponent:@".SynckrIndex"]];
             
-            NSLog(@"%@", [contents description]);
-        }
+            if (!contents)
+            {
+                contents = [[NSMutableDictionary alloc] init];
+                
+                // Index the contents
+                
+                [self indexDirectory: path intoDictionary: contents recursively:true];
+                
+                NSString *target = [path stringByAppendingPathComponent:@"SynckrIndex.plist"];
+                [contents writeToFile:target atomically:YES];
+                
+                NSLog(@"%@", [contents description]);
+            }
             
         }
         
@@ -127,7 +130,7 @@ FolderScanner *fsInstance;
 
 - (void)URLWatcher:(CDEvents *)URLWatcher eventOccurred:(CDEvent *)event
 {
-    NSLog(@"Got Event");
+    NSLog(@"Got Event; %d", event.mustRescanSubDirectories);
     [NSThread sleepForTimeInterval:0.25];
     
     NSString *eventPath = [event.URL path];
@@ -162,6 +165,7 @@ FolderScanner *fsInstance;
         NSMutableDictionary *real = [[NSMutableDictionary alloc] init];
         
         [self indexDirectory:eventPath intoDictionary:real recursively:false];
+        BOOL modified = false;
         
         NSArray *keys = [real allKeys];
         
@@ -185,6 +189,8 @@ FolderScanner *fsInstance;
                 if (realItem.type == NSFileTypeRegular)
                     [indexed setValue:realItem forKey:key];
                 
+                modified = true;
+                
                 [[Synckr instance] itemCreated: realItem atPath:[self getRelativePath:newPath]];
             }
             else
@@ -206,18 +212,24 @@ FolderScanner *fsInstance;
                         f.path = realItem.path;
                         f.creationDate = realItem.creationDate;
                         f.relativePath = [self getRelativePath:f.path];
-                        
+                        modified = true;
                     }
                     else if ([f.modificationDate compare:realItem.modificationDate] != NSOrderedSame)
                     {
                         // MODIFIED!!!
                         NSLog(@"Modified file at: %@", realItem.path);
                         f.modificationDate = realItem.modificationDate;
+                        modified = true;
                     }
                     
                 }
             }
         }
+        
+        if (modified)
+            [contents writeToFile:[path stringByAppendingPathComponent:@".SynckrIndex"] atomically:YES];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithUnsignedInteger:event.identifier] forKey:CONFIG_LAST_EVENT_ID];
         
     }
 }
@@ -376,11 +388,6 @@ FolderScanner *fsInstance;
         file.ignore = false;
         
     }];
-    
-    [downloads operationCount];
-    [downloads isSuspended];
-    [downloads setSuspended:NO];
-    downloads.maxConcurrentOperationCount = 2;
 }
 
 - (NSString*)absolutePath:(NSString *)relPath
