@@ -8,12 +8,11 @@
 
 #import <CDEvents/CDEventsDelegate.h>
 #import <Foundation/Foundation.h>
-#import "File.h"
 
 @interface FolderScanner : NSObject<CDEventsDelegate>
 
 - (void) ensureDirExists: (NSString *)relPath;
-- (void) download: (File*)file;
+- (void) download: (NSMutableDictionary*)file;
 - (NSMutableDictionary*) indexedDirAtSubPath: (NSString*)subPath;
 - (NSString *)absolutePath: (NSString *)relPath;
 - (NSUInteger) numTasks;

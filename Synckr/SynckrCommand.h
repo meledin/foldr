@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
-#import "File.h"
+#import "NSMutableDictionary+SynckrFile.h"
 
 @class SynckrCommand;
 
@@ -27,7 +27,7 @@ typedef enum SynckrCommandOp
 
 @property (strong) NSString *path;
 @property NSUInteger flickrPhotoId;
-@property (strong) File *localFile;
+@property (strong) NSMutableDictionary *localFile;
 @property SynckrCommandOp op;
 
 @property (strong) NSString *flickrCommand;
