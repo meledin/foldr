@@ -9,8 +9,8 @@
 #import "FolderScanner.h"
 #import <CDEvents/CDEvents.h>
 #import <CDEvents/CDEvent.h>
-#import "File.h"
 #import "Synckr.h"
+#import "NSMutableDictionary+SynckrFile.h"
 
 FolderScanner *fsInstance;
 
@@ -39,7 +39,7 @@ FolderScanner *fsInstance;
             NSError *error;
             NSDictionary *fileInfo = [fileManager attributesOfItemAtPath:currentPath error:&error];
             
-            File *cf = [[File alloc] init];
+            NSMutableDictionary *cf = [[NSMutableDictionary alloc] init];
             cf.name = [fileNames objectAtIndex:i];
             cf.type = fileInfo.fileType;
             cf.path = currentPath;
@@ -66,6 +66,7 @@ FolderScanner *fsInstance;
                     continue; // Don't add hidden files.
                 
                 [dict setValue:cf forKey:cf.name];
+                
             }
             
             //[files addObject:currentFile];
@@ -173,7 +174,7 @@ FolderScanner *fsInstance;
         for (int i=0; i<keys.count; i++)
         {
             NSString *key = keys[i];
-            File *realItem = (File*)[real valueForKey:key];
+            NSMutableDictionary *realItem = (NSMutableDictionary*)[real valueForKey:key];
             NSObject *value = [indexed valueForKey: key];
             
             if (!value)
@@ -197,7 +198,7 @@ FolderScanner *fsInstance;
             {
                 if ([value respondsToSelector:@selector(name)])
                 {
-                    File *f = (File*)value;
+                    NSMutableDictionary *f = (NSMutableDictionary*)value;
                     
                     if (f.ignore)
                     {
@@ -315,12 +316,12 @@ FolderScanner *fsInstance;
     
 }
 
-- (void) download: (File*)file
+- (void) download: (NSMutableDictionary*)file
 {
     [self download:file andOverwrite:false];
 }
 
-- (void) download: (File*)file andOverwrite: (BOOL) overwrite
+- (void) download: (NSMutableDictionary*)file andOverwrite: (BOOL) overwrite
 {
     file.ignore = true;
     file.path = [path stringByAppendingPathComponent:file.relativePath];

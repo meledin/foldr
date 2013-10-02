@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7544078717F777A800A6E78E"
-               BuildableName = "Foldr.app"
-               BlueprintName = "Foldr"
-               ReferencedContainer = "container:Foldr.xcodeproj">
+               BlueprintIdentifier = "75E5178D17FA899800984C58"
+               BuildableName = "SynckrHelper.app"
+               BlueprintName = "SynckrHelper"
+               ReferencedContainer = "container:Synckr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7544078717F777A800A6E78E"
-            BuildableName = "Foldr.app"
-            BlueprintName = "Foldr"
-            ReferencedContainer = "container:Foldr.xcodeproj">
+            BlueprintIdentifier = "75E5178D17FA899800984C58"
+            BuildableName = "SynckrHelper.app"
+            BlueprintName = "SynckrHelper"
+            ReferencedContainer = "container:Synckr.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7544078717F777A800A6E78E"
-            BuildableName = "Foldr.app"
-            BlueprintName = "Foldr"
-            ReferencedContainer = "container:Foldr.xcodeproj">
+            BlueprintIdentifier = "75E5178D17FA899800984C58"
+            BuildableName = "SynckrHelper.app"
+            BlueprintName = "SynckrHelper"
+            ReferencedContainer = "container:Synckr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7544078717F777A800A6E78E"
-            BuildableName = "Foldr.app"
-            BlueprintName = "Foldr"
-            ReferencedContainer = "container:Foldr.xcodeproj">
+            BlueprintIdentifier = "75E5178D17FA899800984C58"
+            BuildableName = "SynckrHelper.app"
+            BlueprintName = "SynckrHelper"
+            ReferencedContainer = "container:Synckr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

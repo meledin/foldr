@@ -13,6 +13,7 @@
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 #import "SerialDict.h"
 #import "StatusMenu.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 Synckr *instance = nil;
 
@@ -50,6 +51,38 @@ Synckr *instance = nil;
     SynckrCommand *cmd = [SynckrCommand get: @"flickr.test.login"];
     cmd.onSuccess = ^(NSDictionary *resp)
     {
+        
+#ifdef SYNCKR_PARENT
+        
+        BOOL daemon = [[NSUserDefaults standardUserDefaults] boolForKey:CONFIG_DAEMON];
+        
+        if (daemon)
+        {
+            
+            NSArray *arr = [[NSWorkspace sharedWorkspace] runningApplications];
+            BOOL helperRunning = false;
+            for (int i=0; i<arr.count; i++)
+            {
+                NSRunningApplication *app = arr[i];
+                NSLog(@"%@", [app description]);
+                
+                NSRange r = [[[app bundleURL] description] rangeOfString: @"SynckrHelper"];
+                if (r.location != NSNotFound && r.location > 0)
+                    helperRunning = true;
+            }
+            
+            if (!helperRunning)
+            {
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                NSLog(@"Helper not running... Attempting to start!");
+                SMLoginItemSetEnabled((__bridge CFStringRef)@"com.d2dx.Synckr", false);
+                SMLoginItemSetEnabled((__bridge CFStringRef)@"com.d2dx.Synckr", true);
+                [delegate.welcomeWindow makeKeyAndOrderFront:self];
+            }
+            return;
+        }
+        
+#endif
         
         scanner = [[FolderScanner alloc] init];
         status = [[StatusMenu alloc] init];
@@ -104,7 +137,7 @@ Synckr *instance = nil;
         for (int i=0; i<photos.count; i++)
         {
             NSDictionary *photo = photos[i];
-            File *f = [[File alloc] init];
+            NSMutableDictionary *f = [[NSMutableDictionary alloc] init];
             f.flickrPhotoId = [photo valueForKeyPath:@"id"];
             f.flickrPhotoFarm = [photo valueForKeyPath:@"farm"];
             f.flickrPhotoSecret = [photo valueForKeyPath:@"secret"];
@@ -143,7 +176,7 @@ Synckr *instance = nil;
     };
     [delegate queueCommand:cmd];
 }
-- (void) itemCreated: (File*)item atPath: (NSString *)relativePath
+- (void) itemCreated: (NSMutableDictionary*)item atPath: (NSString *)relativePath
 {
     if (item.type == NSFileTypeRegular)
     {
@@ -258,7 +291,7 @@ Synckr *instance = nil;
 }
 
 // Dropped a webloc. Read and convert plx.
-- (void) createFolderForItem: (File*)item
+- (void) createFolderForItem: (NSMutableDictionary*)item
 {
     NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:item.path];
     NSString *url = [d valueForKey:@"URL"];
@@ -370,5 +403,10 @@ Synckr *instance = nil;
     [invocation setSelector:@selector(refresh)];
     [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:5 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
 }
+
+- (NSString *)username
+{
+    [user valueForKeyPath:@"username._text"];
+};
 
 @end

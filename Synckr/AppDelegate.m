@@ -200,7 +200,6 @@ AppDelegate *mInstance = nil;
     [[Uploader instance] setCtx:_flickrContext];
     
     [[Synckr instance] testLogin];
-    
     //[self oauthAuthenticationAction];
 }
 
@@ -374,8 +373,10 @@ AppDelegate *mInstance = nil;
             [self flushCommands];
             return;
         }
-        NSRunAlertPanel(@"API Error", [NSString stringWithFormat:@"An error occurred in the stage \"%@\", error: %@", inRequest.sessionInfo, inError], @"Dismiss", nil, nil);
         
+#ifdef SYNCKR_PARENT
+        NSRunAlertPanel(@"API Error", [NSString stringWithFormat:@"An error occurred in the stage \"%@\", error: %@", inRequest.sessionInfo, inError], @"Dismiss", nil, nil);
+#endif
         if (inRequest == _flickrRequest)
             sending = false;
         [self flushCommands];

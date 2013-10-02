@@ -30,6 +30,7 @@
 - (IBAction)resetToken:(id)sender;
 - (IBAction)changeSynckrFolder:(id)sender;
 
+@property (assign) IBOutlet NSWindow *welcomeWindow;
 @property (assign) IBOutlet NSWindow *window;
 @property (strong) IBOutlet NSMenu *statusMenu;
 @property (weak) IBOutlet NSTextField *locationField;
@@ -42,6 +43,7 @@
 @property (weak) IBOutlet NSMenuItem *statusMenuDownloads;
 @property (weak) IBOutlet NSMenuItem *statusMenuUploads;
 @property (weak) IBOutlet NSMenuItem *statusMenuTasks;
+@property (weak) IBOutlet NSMenuItem *statusMenuLogout;
 
 
 @end

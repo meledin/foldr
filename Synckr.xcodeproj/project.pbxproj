@@ -19,16 +19,37 @@
 		7544079B17F777A900A6E78E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7544079917F777A900A6E78E /* MainMenu.xib */; };
 		754407A117F777B600A6E78E /* FolderScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407A017F777B600A6E78E /* FolderScanner.m */; };
 		754407DB17F77B0000A6E78E /* CDEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754407D817F77AF400A6E78E /* CDEvents.framework */; };
-		754407DE17F7800F00A6E78E /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407DD17F7800F00A6E78E /* File.m */; };
 		754407F217F78D5A00A6E78E /* ObjectiveFlickr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754407EF17F78D4D00A6E78E /* ObjectiveFlickr.framework */; };
 		754407FF17F7924200A6E78E /* SynckrCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407FE17F7924200A6E78E /* SynckrCommand.m */; };
 		7544080217F7994500A6E78E /* Synckr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080117F7994500A6E78E /* Synckr.m */; };
 		7544080517F7D8AC00A6E78E /* Uploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080417F7D8AC00A6E78E /* Uploader.m */; };
+		75D43CBB17FBB1C80099F885 /* SynckrHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75E5178E17FA899800984C58 /* SynckrHelper.app */; };
+		75D43CBF17FBB8A10099F885 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D43CBE17FBB8A10099F885 /* ServiceManagement.framework */; };
+		75D43CC117FBBE7A0099F885 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75D43CC017FBBE7A0099F885 /* PowerIcon.png */; };
 		75E5011B17F88E5400314DDA /* StatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5011A17F88E5400314DDA /* StatusMenu.m */; };
 		75E5012317F88F8E00314DDA /* menuicon_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E5012117F88F8E00314DDA /* menuicon_highlight.png */; };
 		75E5012417F88F8E00314DDA /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E5012217F88F8E00314DDA /* menuicon.png */; };
 		75E5012717F89B7300314DDA /* CDEvents.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 754407D817F77AF400A6E78E /* CDEvents.framework */; };
 		75E5012817F89B7700314DDA /* ObjectiveFlickr.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 754407EF17F78D4D00A6E78E /* ObjectiveFlickr.framework */; };
+		75E5178917FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5178817FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m */; };
+		75E5178F17FA899800984C58 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7544076917F7776200A6E78E /* Cocoa.framework */; };
+		75E5179517FA899800984C58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E5179317FA899800984C58 /* InfoPlist.strings */; };
+		75E5179717FA899800984C58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5179617FA899800984C58 /* main.m */; };
+		75E5179B17FA899800984C58 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 75E5179917FA899800984C58 /* Credits.rtf */; };
+		75E5179E17FA899800984C58 /* HeadlessAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5179D17FA899800984C58 /* HeadlessAppDelegate.m */; };
+		75E517A117FA899800984C58 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E5179F17FA899800984C58 /* MainMenu.xib */; };
+		75E517A517FA8A5E00984C58 /* FolderScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407A017F777B600A6E78E /* FolderScanner.m */; };
+		75E517A617FA8A5E00984C58 /* Uploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080417F7D8AC00A6E78E /* Uploader.m */; };
+		75E517A717FA8A5E00984C58 /* NSMutableDictionary+SynckrFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5178817FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m */; };
+		75E517A817FA8A5E00984C58 /* Synckr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080117F7994500A6E78E /* Synckr.m */; };
+		75E517A917FA8A5E00984C58 /* SynckrCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407FE17F7924200A6E78E /* SynckrCommand.m */; };
+		75E517AA17FA8A5E00984C58 /* SerialDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 753BF8D417F7F27700AAB3CC /* SerialDict.m */; };
+		75E517AB17FA8A5E00984C58 /* StatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E5011A17F88E5400314DDA /* StatusMenu.m */; };
+		75E517AC17FA8B0100984C58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544079717F777A800A6E78E /* AppDelegate.m */; };
+		75E517AD17FA8B0600984C58 /* CDEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754407D817F77AF400A6E78E /* CDEvents.framework */; };
+		75E517AE17FA8B0600984C58 /* ObjectiveFlickr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754407EF17F78D4D00A6E78E /* ObjectiveFlickr.framework */; };
+		75E517B017FA910F00984C58 /* menuicon_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E5012117F88F8E00314DDA /* menuicon_highlight.png */; };
+		75E517B117FA910F00984C58 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E5012217F88F8E00314DDA /* menuicon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +81,26 @@
 			remoteGlobalIDString = 6ABF72E60F939BE600B9179E;
 			remoteInfo = "ObjectiveFlickr (library)";
 		};
+		75D43CB817FBB1AF0099F885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7544073917F7744700A6E78E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75E5178D17FA899800984C58;
+			remoteInfo = SynckrHelper;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		75D43CBA17FBB1B40099F885 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				75D43CBB17FBB1C80099F885 /* SynckrHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75E5012617F89B5E00314DDA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,8 +139,6 @@
 		7544079F17F777B600A6E78E /* FolderScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderScanner.h; sourceTree = "<group>"; };
 		754407A017F777B600A6E78E /* FolderScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderScanner.m; sourceTree = "<group>"; };
 		754407D217F77AF300A6E78E /* CDEvents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CDEvents.xcodeproj; path = CDEvents/CDEvents.xcodeproj; sourceTree = "<group>"; };
-		754407DC17F7800F00A6E78E /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
-		754407DD17F7800F00A6E78E /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		754407E817F78D4D00A6E78E /* ObjectiveFlickr.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveFlickr.xcodeproj; path = objectiveflickr/ObjectiveFlickr.xcodeproj; sourceTree = "<group>"; };
 		754407FD17F7924200A6E78E /* SynckrCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynckrCommand.h; sourceTree = "<group>"; };
 		754407FE17F7924200A6E78E /* SynckrCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynckrCommand.m; sourceTree = "<group>"; };
@@ -110,11 +146,25 @@
 		7544080117F7994500A6E78E /* Synckr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synckr.m; sourceTree = "<group>"; };
 		7544080317F7D8AC00A6E78E /* Uploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uploader.h; sourceTree = "<group>"; };
 		7544080417F7D8AC00A6E78E /* Uploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uploader.m; sourceTree = "<group>"; };
+		75D43CBE17FBB8A10099F885 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ServiceManagement.framework; sourceTree = DEVELOPER_DIR; };
+		75D43CC017FBBE7A0099F885 /* PowerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerIcon.png; sourceTree = "<group>"; };
 		75E5011917F88E5400314DDA /* StatusMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusMenu.h; sourceTree = "<group>"; };
 		75E5011A17F88E5400314DDA /* StatusMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusMenu.m; sourceTree = "<group>"; };
 		75E5012117F88F8E00314DDA /* menuicon_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuicon_highlight.png; path = icons/menuicon_highlight.png; sourceTree = SOURCE_ROOT; };
 		75E5012217F88F8E00314DDA /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuicon.png; path = icons/menuicon.png; sourceTree = SOURCE_ROOT; };
 		75E5178517FA55A500984C58 /* Synckr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Synckr.entitlements; sourceTree = "<group>"; };
+		75E5178717FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SynckrFile.h"; sourceTree = "<group>"; };
+		75E5178817FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SynckrFile.m"; sourceTree = "<group>"; };
+		75E5178E17FA899800984C58 /* SynckrHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SynckrHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E5179217FA899800984C58 /* SynckrHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SynckrHelper-Info.plist"; sourceTree = "<group>"; };
+		75E5179417FA899800984C58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		75E5179617FA899800984C58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		75E5179817FA899800984C58 /* SynckrHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SynckrHelper-Prefix.pch"; sourceTree = "<group>"; };
+		75E5179A17FA899800984C58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		75E5179C17FA899800984C58 /* HeadlessAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadlessAppDelegate.h; sourceTree = "<group>"; };
+		75E5179D17FA899800984C58 /* HeadlessAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadlessAppDelegate.m; sourceTree = "<group>"; };
+		75E517A017FA899800984C58 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		75E517AF17FA8F0E00984C58 /* SynckrHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SynckrHelper.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,9 +172,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D43CBF17FBB8A10099F885 /* ServiceManagement.framework in Frameworks */,
 				754407F217F78D5A00A6E78E /* ObjectiveFlickr.framework in Frameworks */,
 				754407DB17F77B0000A6E78E /* CDEvents.framework in Frameworks */,
 				7544078917F777A800A6E78E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E5178B17FA899800984C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E517AD17FA8B0600984C58 /* CDEvents.framework in Frameworks */,
+				75E517AE17FA8B0600984C58 /* ObjectiveFlickr.framework in Frameworks */,
+				75E5178F17FA899800984C58 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,10 +195,12 @@
 		7544073817F7744700A6E78E = {
 			isa = PBXGroup;
 			children = (
+				75D43CBE17FBB8A10099F885 /* ServiceManagement.framework */,
 				753BF8DB17F8012200AAB3CC /* Untitled.icns */,
 				754407E817F78D4D00A6E78E /* ObjectiveFlickr.xcodeproj */,
 				754407D217F77AF300A6E78E /* CDEvents.xcodeproj */,
 				7544078A17F777A800A6E78E /* Synckr */,
+				75E5179017FA899800984C58 /* SynckrHelper */,
 				7544074317F7744700A6E78E /* Frameworks */,
 				7544074217F7744700A6E78E /* Products */,
 			);
@@ -147,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				7544078817F777A800A6E78E /* Synckr.app */,
+				75E5178E17FA899800984C58 /* SynckrHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,8 +245,8 @@
 				754407A017F777B600A6E78E /* FolderScanner.m */,
 				7544080317F7D8AC00A6E78E /* Uploader.h */,
 				7544080417F7D8AC00A6E78E /* Uploader.m */,
-				754407DC17F7800F00A6E78E /* File.h */,
-				754407DD17F7800F00A6E78E /* File.m */,
+				75E5178717FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.h */,
+				75E5178817FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m */,
 				7544080017F7994500A6E78E /* Synckr.h */,
 				7544080117F7994500A6E78E /* Synckr.m */,
 				7544079617F777A800A6E78E /* AppDelegate.h */,
@@ -236,9 +300,34 @@
 		75E5178617FA642D00984C58 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				75D43CC017FBBE7A0099F885 /* PowerIcon.png */,
 				7544079917F777A900A6E78E /* MainMenu.xib */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		75E5179017FA899800984C58 /* SynckrHelper */ = {
+			isa = PBXGroup;
+			children = (
+				75E517AF17FA8F0E00984C58 /* SynckrHelper.entitlements */,
+				75E5179C17FA899800984C58 /* HeadlessAppDelegate.h */,
+				75E5179D17FA899800984C58 /* HeadlessAppDelegate.m */,
+				75E5179F17FA899800984C58 /* MainMenu.xib */,
+				75E5179117FA899800984C58 /* Supporting Files */,
+			);
+			path = SynckrHelper;
+			sourceTree = "<group>";
+		};
+		75E5179117FA899800984C58 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75E5179217FA899800984C58 /* SynckrHelper-Info.plist */,
+				75E5179317FA899800984C58 /* InfoPlist.strings */,
+				75E5179617FA899800984C58 /* main.m */,
+				75E5179817FA899800984C58 /* SynckrHelper-Prefix.pch */,
+				75E5179917FA899800984C58 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,14 +341,33 @@
 				7544078517F777A800A6E78E /* Frameworks */,
 				7544078617F777A800A6E78E /* Resources */,
 				75E5012617F89B5E00314DDA /* CopyFiles */,
+				75D43CBA17FBB1B40099F885 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75D43CB917FBB1AF0099F885 /* PBXTargetDependency */,
+			);
+			name = Synckr;
+			productName = Synckr;
+			productReference = 7544078817F777A800A6E78E /* Synckr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		75E5178D17FA899800984C58 /* SynckrHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75E517A217FA899800984C58 /* Build configuration list for PBXNativeTarget "SynckrHelper" */;
+			buildPhases = (
+				75E5178A17FA899800984C58 /* Sources */,
+				75E5178B17FA899800984C58 /* Frameworks */,
+				75E5178C17FA899800984C58 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Synckr;
-			productName = Synckr;
-			productReference = 7544078817F777A800A6E78E /* Synckr.app */;
+			name = SynckrHelper;
+			productName = SynckrHelper;
+			productReference = 75E5178E17FA899800984C58 /* SynckrHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -295,6 +403,7 @@
 			projectRoot = "";
 			targets = (
 				7544078717F777A800A6E78E /* Synckr */,
+				75E5178D17FA899800984C58 /* SynckrHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -343,6 +452,19 @@
 				753BF8E017F804D500AAB3CC /* Synckr_icn.png in Resources */,
 				75E5012317F88F8E00314DDA /* menuicon_highlight.png in Resources */,
 				75E5012417F88F8E00314DDA /* menuicon.png in Resources */,
+				75D43CC117FBBE7A0099F885 /* PowerIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E5178C17FA899800984C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E517B017FA910F00984C58 /* menuicon_highlight.png in Resources */,
+				75E517B117FA910F00984C58 /* menuicon.png in Resources */,
+				75E5179517FA899800984C58 /* InfoPlist.strings in Resources */,
+				75E5179B17FA899800984C58 /* Credits.rtf in Resources */,
+				75E517A117FA899800984C58 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,16 +478,41 @@
 				7544079117F777A800A6E78E /* main.m in Sources */,
 				7544079817F777A800A6E78E /* AppDelegate.m in Sources */,
 				754407A117F777B600A6E78E /* FolderScanner.m in Sources */,
-				754407DE17F7800F00A6E78E /* File.m in Sources */,
 				754407FF17F7924200A6E78E /* SynckrCommand.m in Sources */,
 				7544080217F7994500A6E78E /* Synckr.m in Sources */,
 				7544080517F7D8AC00A6E78E /* Uploader.m in Sources */,
 				753BF8D517F7F27700AAB3CC /* SerialDict.m in Sources */,
 				75E5011B17F88E5400314DDA /* StatusMenu.m in Sources */,
+				75E5178917FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E5178A17FA899800984C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E517A517FA8A5E00984C58 /* FolderScanner.m in Sources */,
+				75E517A617FA8A5E00984C58 /* Uploader.m in Sources */,
+				75E517A717FA8A5E00984C58 /* NSMutableDictionary+SynckrFile.m in Sources */,
+				75E517A817FA8A5E00984C58 /* Synckr.m in Sources */,
+				75E517A917FA8A5E00984C58 /* SynckrCommand.m in Sources */,
+				75E517AA17FA8A5E00984C58 /* SerialDict.m in Sources */,
+				75E517AB17FA8A5E00984C58 /* StatusMenu.m in Sources */,
+				75E5179717FA899800984C58 /* main.m in Sources */,
+				75E5179E17FA899800984C58 /* HeadlessAppDelegate.m in Sources */,
+				75E517AC17FA8B0100984C58 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75D43CB917FBB1AF0099F885 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75E5178D17FA899800984C58 /* SynckrHelper */;
+			targetProxy = 75D43CB817FBB1AF0099F885 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7544078D17F777A800A6E78E /* InfoPlist.strings */ = {
@@ -392,6 +539,30 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		75E5179317FA899800984C58 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E5179417FA899800984C58 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		75E5179917FA899800984C58 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E5179A17FA899800984C58 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		75E5179F17FA899800984C58 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E517A017FA899800984C58 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -407,6 +578,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -439,6 +611,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -458,7 +631,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Synckr/Synckr.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,12 +639,17 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Synckr/Synckr-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"SYNCKR_PARENT=1",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INFOPLIST_FILE = "Synckr/Synckr-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "-SYNCKR_PARENT=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -483,7 +660,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Synckr/Synckr.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -493,12 +669,83 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Synckr/Synckr-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "SYNCKR_PARENT=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INFOPLIST_FILE = "Synckr/Synckr-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-SYNCKR_PARENT=1",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		75E517A317FA899800984C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Synckr/Synckr.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SynckrHelper/SynckrHelper-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "SynckrHelper/SynckrHelper-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../../../frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"@executable_dir/../../..",
+					"@executable_dir/../../../../frameworks",
+					"@executable_dir/../frameworks",
+					"@executable_dir/../../frameworks",
+					"@executable_dir/../../../frameworks",
+					"@executable_dir/frameworks",
+					"@executable_dir",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		75E517A417FA899800984C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Synckr/Synckr.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SynckrHelper/SynckrHelper-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "SynckrHelper/SynckrHelper-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../../../frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"@executable_dir/../../..",
+					"@executable_dir/../../../../frameworks",
+					"@executable_dir/../frameworks",
+					"@executable_dir/../../frameworks",
+					"@executable_dir/../../../frameworks",
+					"@executable_dir/frameworks",
+					"@executable_dir",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -521,6 +768,15 @@
 			buildConfigurations = (
 				7544079D17F777A900A6E78E /* Debug */,
 				7544079E17F777A900A6E78E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75E517A217FA899800984C58 /* Build configuration list for PBXNativeTarget "SynckrHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E517A317FA899800984C58 /* Debug */,
+				75E517A417FA899800984C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "FolderScanner.h"
 #import "Uploader.h"
+#import "Synckr.h"
 
 @implementation StatusMenu
 {
@@ -34,6 +35,7 @@
         [mStatus setImage:[NSImage imageNamed:@"menuicon.png"]];
         [mStatus setAlternateImage:[NSImage imageNamed:@"menuicon.png"]];
         [mStatus setHighlightMode:YES];
+        del.statusMenuLogout.title = [NSString stringWithFormat:@"Log out %@...", [[Synckr instance] username]];
         [self refreshTask];
     }
     return self;

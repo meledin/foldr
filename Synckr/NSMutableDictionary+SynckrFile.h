@@ -1,14 +1,14 @@
 //
-//  File.h
-//  Foldr
+//  NSObject+NSMutableDictionary_SynckrFile.h
+//  Synckr
 //
-//  Created by Vladimir Katardjiev on 2013-09-28.
+//  Created by Vladimir Katardjiev on 9/30/13.
 //  Copyright (c) 2013 d2dx. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface File : NSObject
+@interface NSMutableDictionary (SynckrFile)
 
 @property (strong) NSString *name;
 @property (strong) NSString *type;
