@@ -23,6 +23,8 @@
 		754407FF17F7924200A6E78E /* SynckrCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 754407FE17F7924200A6E78E /* SynckrCommand.m */; };
 		7544080217F7994500A6E78E /* Synckr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080117F7994500A6E78E /* Synckr.m */; };
 		7544080517F7D8AC00A6E78E /* Uploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7544080417F7D8AC00A6E78E /* Uploader.m */; };
+		75AC2C45180110FD001D2061 /* SynckrSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC2C44180110FC001D2061 /* SynckrSettingsManager.m */; };
+		75AC2C46180110FD001D2061 /* SynckrSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AC2C44180110FC001D2061 /* SynckrSettingsManager.m */; };
 		75D43CBB17FBB1C80099F885 /* SynckrHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75E5178E17FA899800984C58 /* SynckrHelper.app */; };
 		75D43CBF17FBB8A10099F885 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D43CBE17FBB8A10099F885 /* ServiceManagement.framework */; };
 		75D43CC117FBBE7A0099F885 /* PowerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 75D43CC017FBBE7A0099F885 /* PowerIcon.png */; };
@@ -146,6 +148,9 @@
 		7544080117F7994500A6E78E /* Synckr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synckr.m; sourceTree = "<group>"; };
 		7544080317F7D8AC00A6E78E /* Uploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Uploader.h; sourceTree = "<group>"; };
 		7544080417F7D8AC00A6E78E /* Uploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Uploader.m; sourceTree = "<group>"; };
+		75AC2C43180110FC001D2061 /* SynckrSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynckrSettingsManager.h; sourceTree = "<group>"; };
+		75AC2C44180110FC001D2061 /* SynckrSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynckrSettingsManager.m; sourceTree = "<group>"; };
+		75AC2C4C18011609001D2061 /* FlickrKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrKeys.h; sourceTree = "<group>"; };
 		75D43CBE17FBB8A10099F885 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ServiceManagement.framework; sourceTree = DEVELOPER_DIR; };
 		75D43CC017FBBE7A0099F885 /* PowerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerIcon.png; sourceTree = "<group>"; };
 		75E5011917F88E5400314DDA /* StatusMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusMenu.h; sourceTree = "<group>"; };
@@ -251,12 +256,15 @@
 				7544080117F7994500A6E78E /* Synckr.m */,
 				7544079617F777A800A6E78E /* AppDelegate.h */,
 				7544079717F777A800A6E78E /* AppDelegate.m */,
+				75AC2C4C18011609001D2061 /* FlickrKeys.h */,
 				754407FD17F7924200A6E78E /* SynckrCommand.h */,
 				754407FE17F7924200A6E78E /* SynckrCommand.m */,
 				753BF8D317F7F27700AAB3CC /* SerialDict.h */,
 				753BF8D417F7F27700AAB3CC /* SerialDict.m */,
 				75E5011917F88E5400314DDA /* StatusMenu.h */,
 				75E5011A17F88E5400314DDA /* StatusMenu.m */,
+				75AC2C43180110FC001D2061 /* SynckrSettingsManager.h */,
+				75AC2C44180110FC001D2061 /* SynckrSettingsManager.m */,
 				75E5178617FA642D00984C58 /* UI */,
 				7544078B17F777A800A6E78E /* Supporting Files */,
 			);
@@ -484,6 +492,7 @@
 				753BF8D517F7F27700AAB3CC /* SerialDict.m in Sources */,
 				75E5011B17F88E5400314DDA /* StatusMenu.m in Sources */,
 				75E5178917FA7E0A00984C58 /* NSMutableDictionary+SynckrFile.m in Sources */,
+				75AC2C45180110FD001D2061 /* SynckrSettingsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +510,7 @@
 				75E5179717FA899800984C58 /* main.m in Sources */,
 				75E5179E17FA899800984C58 /* HeadlessAppDelegate.m in Sources */,
 				75E517AC17FA8B0100984C58 /* AppDelegate.m in Sources */,
+				75AC2C46180110FD001D2061 /* SynckrSettingsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,9 +19,10 @@
     FolderScanner *down;
     Uploader *up;
     int count;
+    NSTimer *timer;
 }
 
-- (id) init
+- (id) initWithScanner: (FolderScanner*)scanner
 {
     self = [super init];
     if (self)
@@ -29,7 +30,7 @@
         mStatus = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         del = [AppDelegate instance];
         up = [Uploader instance];
-        down = [FolderScanner instance];
+        down = scanner;
         count = 0;
         [mStatus setMenu:del.statusMenu];
         [mStatus setImage:[NSImage imageNamed:@"menuicon.png"]];
@@ -41,6 +42,16 @@
     return self;
 }
 
+- (void) performReset
+{
+    [timer invalidate];
+    timer = NULL;
+    down = NULL;
+    up = NULL;
+    del = NULL;
+    mStatus = NULL;
+}
+
 - (void) refreshTask
 {
     [self refresh];
@@ -48,7 +59,8 @@
                                 [self methodSignatureForSelector:@selector(refresh)]];
     [invocation setTarget:self];
     [invocation setSelector:@selector(refresh)];
-    [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:0.4 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
+    timer = [NSTimer timerWithTimeInterval:0.4 invocation:invocation repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 
 }
 

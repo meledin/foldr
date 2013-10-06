@@ -14,6 +14,7 @@
 #import "SerialDict.h"
 #import "StatusMenu.h"
 #import <ServiceManagement/ServiceManagement.h>
+#import "SynckrSettingsManager.h"
 
 Synckr *instance = nil;
 
@@ -23,6 +24,9 @@ Synckr *instance = nil;
     AppDelegate *delegate;
     FolderScanner *scanner;
     StatusMenu *status;
+    NSTimer *timer;
+    NSConnection *conn;
+    SynckrSettingsManager *settings;
 }
 
 + (Synckr*) instance
@@ -32,6 +36,32 @@ Synckr *instance = nil;
         instance = [[Synckr alloc] init];
     }
     return instance;
+}
+
+- (void) performReset
+{
+    NSLog(@"Performing reset...");
+    [timer invalidate];
+    timer = NULL;
+    
+    [status performReset];
+    status = NULL;
+    
+    [scanner performReset];
+    scanner = NULL;
+    
+#ifndef SYNCKR_PARENT
+    NSLog(@"Sending didLogout");
+    [[SynckrSettingsManager sharedManager] agentDidLogout];
+    
+#endif
+    
+}
+
++ (void) reset
+{
+    [instance performReset];
+    instance = NULL;
 }
 
 - (id) init
@@ -79,17 +109,28 @@ Synckr *instance = nil;
                 SMLoginItemSetEnabled((__bridge CFStringRef)@"com.d2dx.Synckr", true);
                 [delegate.welcomeWindow makeKeyAndOrderFront:self];
             }
+            
+            // Export server.
+            [SynckrSettingsManager startServer];
+            
             return;
         }
+        else
+        {
+            NSLog(@"Ensuring helper is dead...");
+            SMLoginItemSetEnabled((__bridge CFStringRef)@"com.d2dx.Synckr", false);
+        }
+        
+#else
         
 #endif
-        
-        scanner = [[FolderScanner alloc] init];
-        status = [[StatusMenu alloc] init];
         
         NSLog(@"Got response: %@", [resp description]);
         user = [resp valueForKeyPath:@"user"];
         NSLog(@"Got Username: %@", [user valueForKeyPath:@"username._text"]);
+        
+        scanner = [[FolderScanner alloc] init];
+        status = [[StatusMenu alloc] initWithScanner:scanner];
         
         [delegate notifyLoggedIn];
         
@@ -401,12 +442,13 @@ Synckr *instance = nil;
                                 [self methodSignatureForSelector:@selector(refresh)]];
     [invocation setTarget:self];
     [invocation setSelector:@selector(refresh)];
-    [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:5 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
+    timer = [NSTimer timerWithTimeInterval:5 invocation:invocation repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (NSString *)username
 {
-    [user valueForKeyPath:@"username._text"];
+    return [user valueForKeyPath:@"username._text"];
 };
 
 @end

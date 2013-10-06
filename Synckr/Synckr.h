@@ -23,6 +23,7 @@
 @interface Synckr : NSObject
 
 + (Synckr*) instance;
++ (void) reset;
 
 - (void) testLogin;
 //- (void) uploadItem: (File*) item;

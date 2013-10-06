@@ -12,8 +12,6 @@
 #import "Synckr.h"
 #import "NSMutableDictionary+SynckrFile.h"
 
-FolderScanner *fsInstance;
-
 @implementation FolderScanner
 {
     CDEvents *events;
@@ -22,8 +20,6 @@ FolderScanner *fsInstance;
     NSOperationQueue *downloads;
     NSUInteger numDownloads;
 }
-
-//- (void) indexSubDirectory: (NSString*)path;
 
 - (void) indexDirectory: (NSString*)dirPath intoDictionary: (NSMutableDictionary*)dict recursively: (BOOL) isRecursive
 {
@@ -74,18 +70,12 @@ FolderScanner *fsInstance;
     }
 }
 
-+ (FolderScanner*)instance
-{
-    return fsInstance;
-}
-
 - (id) init
 {
     self = [super init];
     
     if (self)
     {
-        fsInstance = self;
         downloads = [[NSOperationQueue alloc] init];
         path = [[[NSUserDefaults standardUserDefaults] valueForKey:CONFIG_SYNCKR_DIR] stringByResolvingSymlinksInPath];
         
@@ -399,6 +389,12 @@ FolderScanner *fsInstance;
 - (NSUInteger) numTasks
 {
     return numDownloads;
+}
+
+- (void) performReset
+{
+    events.delegate = NULL;
+    events = NULL;
 }
 
 @end

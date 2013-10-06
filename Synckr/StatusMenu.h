@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class FolderScanner;
+
 @interface StatusMenu : NSObject
+
+- (id) initWithScanner: (FolderScanner*)scanner;
+- (void) performReset;
 
 @end

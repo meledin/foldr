@@ -437,11 +437,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/AppDelegate.m"
-         timestampString = "402376424.412501"
+         timestampString = "402724136.186482"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "186"
+         endingLineNumber = "186"
          landmarkName = "-applicationDidFinishLaunching:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -450,11 +450,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "230"
-         endingLineNumber = "230"
+         startingLineNumber = "220"
+         endingLineNumber = "220"
          landmarkName = "-URLWatcher:eventOccurred:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -463,11 +463,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "168"
-         endingLineNumber = "168"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-URLWatcher:eventOccurred:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -476,11 +476,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
          landmarkName = "-URLWatcher:eventOccurred:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -489,11 +489,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
+         startingLineNumber = "223"
+         endingLineNumber = "223"
          landmarkName = "-URLWatcher:eventOccurred:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -502,11 +502,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -515,11 +515,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "119"
-         endingLineNumber = "119"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -528,11 +528,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/FolderScanner.m"
-         timestampString = "402294389.17339"
+         timestampString = "402712675.369007"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -554,11 +554,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/Synckr.m"
-         timestampString = "402377889.102467"
+         timestampString = "402724031.297342"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
          landmarkName = "-testLogin"
          landmarkType = "5">
       </FileBreakpoint>
@@ -567,11 +567,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/Synckr.m"
-         timestampString = "402378576.947747"
+         timestampString = "402724031.297342"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
          landmarkName = "-testLogin"
          landmarkType = "5">
       </FileBreakpoint>
@@ -580,12 +580,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Synckr/Synckr.m"
-         timestampString = "402378082.709488"
+         timestampString = "402724031.297342"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
          landmarkName = "-testLogin"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Synckr/Synckr.m"
+         timestampString = "402724031.297342"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "451"
+         endingLineNumber = "451"
+         landmarkName = "-username"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Synckr/AppDelegate.m"
+         timestampString = "402724189.468245"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "438"
+         endingLineNumber = "438"
+         landmarkName = "-removeNotification"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Synckr/AppDelegate.m"
+         timestampString = "402723946.63671"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
+         landmarkName = "-resetToken:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

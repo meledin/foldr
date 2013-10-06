@@ -11,9 +11,8 @@
 #import "SynckrCommand.h"
 #import "Synckr.h"
 #import "Uploader.h"
-
-#define API_KEY @"eac9c2f5dec0750e66e03494ef5b425a"
-#define API_SHARED_SECRET @"a5e43bcba7cf4499"
+#import "SynckrSettingsManager.h"
+#import "FlickrKeys.h"
 
 
 static NSString *kCallbackURLBaseString = @"flickrsynckr://callback";
@@ -65,8 +64,15 @@ AppDelegate *mInstance = nil;
 
 - (IBAction)resetToken:(id)sender {
     
-    //[NSString stringWithFormat:@"Log out user %@", [[Synckr instance] username]];
+    //
     //[NSAlert alertWithMessageText: defaultButton:<#(NSString *)#> alternateButton:<#(NSString *)#> otherButton:<#(NSString *)#> informativeTextWithFormat:<#(NSString *), ...#>]
+    [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+    NSString *title = [NSString stringWithFormat:@"Log out user %@", [[Synckr instance] username]];
+    NSInteger result = NSRunAlertPanel(title, @"Logging out the user will stop any Synckr tasks, as well as prevent any new uploads or downloads until a new user is logged in. The background agent will also exit, if started.", @"Log out", @"Keep me logged in", nil);
+    
+    // Keep me logged in
+    if (result == 0)
+        return;
     
     _flickrContext.OAuthToken = @"";
     _flickrContext.OAuthTokenSecret = @"";
@@ -74,6 +80,9 @@ AppDelegate *mInstance = nil;
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def setValue:@"" forKey:@"access_token"];
     [def setValue:@"" forKey:@"access_secret"];
+    [def synchronize];
+    [Synckr reset];
+    [self oauthAuthenticationAction];
 }
 
 - (IBAction)changeSynckrFolder:(id)sender {
@@ -193,11 +202,13 @@ AppDelegate *mInstance = nil;
     _flickrRequest.requestTimeoutInterval = 60.0;
     
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def synchronize];
     
     _flickrContext.OAuthToken = [def stringForKey:@"access_token"];
     _flickrContext.OAuthTokenSecret = [def stringForKey:@"access_secret"];
     
     [[Uploader instance] setCtx:_flickrContext];
+    [self.welcomeWindow orderOut:self];
     
     [[Synckr instance] testLogin];
     //[self oauthAuthenticationAction];
@@ -404,7 +415,8 @@ AppDelegate *mInstance = nil;
     [notification setTitle:@"Synckr Login Success!"];
     [notification setInformativeText:@"You are now logged in to Synckr. It has hidden itself for your convenience. Enjoy!"];
     
-    [self performSelector:@selector(removeNotification:) withObject:notification afterDelay:10];
+    //[self performSelector:@selector(removeNotification:) withObject:notification afterDelay:1];
+    [self removeNotification];
     
     NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
     [center setDelegate:self];
@@ -414,10 +426,18 @@ AppDelegate *mInstance = nil;
 - (IBAction)showPreferences:(id)sender {
 }
 
-- (void) removeNotification: (NSUserNotification *)notification
+- (void) removeNotification
 {
+    NSLog(@"Attempting to remove notification...");
     NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
-    [center removeDeliveredNotification:notification];
+    NSArray *nots = center.deliveredNotifications;
+    for (int i=0; i<nots.count; i++)
+    {
+        NSUserNotification *not = nots[i];
+        
+        if ([not.title caseInsensitiveCompare:@"Synckr Login Success!"] == NSOrderedSame)
+            [center removeDeliveredNotification:not];
+    }
 }
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification

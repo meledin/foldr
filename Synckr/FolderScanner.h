@@ -16,6 +16,7 @@
 - (NSMutableDictionary*) indexedDirAtSubPath: (NSString*)subPath;
 - (NSString *)absolutePath: (NSString *)relPath;
 - (NSUInteger) numTasks;
-+ (FolderScanner*)instance;
+//+ (FolderScanner*)instance;
+- (void) performReset;
 
 @end
